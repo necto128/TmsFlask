@@ -8,7 +8,7 @@ class User(db.Model):
     username = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(16), nullable=False)
 
-    idea = db.relationship("Idea", backref='idea', lazy=True)
+    idea = db.relationship("Idea", backref='user', lazy=True)
 
     def __repr__(self):
         return f"<User {self.username}>"
@@ -24,4 +24,4 @@ class Idea(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
     def __repr__(self):
-        return f"<Idea {self.first_name} {self.last_name}>"
+        return f"<Idea {self.type} {self.activity}>"
