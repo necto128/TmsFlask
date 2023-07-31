@@ -1,10 +1,10 @@
 from typing import Union
 
 from flask import render_template, request, redirect, url_for
+from services.idea_service import IdeaServices
 
 from models.models import User, Idea, db
 from schemas.schemas import UserSchema
-from services.service import generate_idea
 
 
 def show_users():
@@ -29,13 +29,5 @@ def show_user(user_id: int) -> render_template:
 
 
 def create_idea(user_id: int) -> redirect:
-    idea = generate_idea()
-    db.session.add(Idea(
-        type=idea['type'],
-        activity=idea['activity'],
-        accessibility=idea['accessibility'],
-        price=idea['price'],
-        user_id=user_id
-    ))
-    db.session.commit()
+    IdeaServices.save_idea(user_id)
     return redirect(url_for("app_urls.show_user", user_id=user_id))
