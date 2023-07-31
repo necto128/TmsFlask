@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Пользователь {{ user.username }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Список идей</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Тип</th>
+            <th>Активность</th>
+            <th>Доступность</th>
+            <th>Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for idea in ideas %}
+        <tr>
+            <td>{{ idea.type }}</td>
+            <td>{{ idea.activity }}</td>
+            <td>{{ idea.accessibility }}</td>
+            <td>{{ idea.price }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
